@@ -1,0 +1,41 @@
+#!/usr/bin/env fift -s
+"Asm.fif" include
+"TonUtil.fif" include
+
+{ ."usage: " @' $0 type ." <workchain-id> <wallet-id> <file-base> <start-time> <duration-time> <unlock-period> <cliff-duration> <vesting-amount> <sender-address> <owner-address>" cr
+  ."Creates a new vesting wallet in specified workchain, controlled by specified public key, loaded from <filename-base> and <owner-address> assigned to it," cr
+  "<sender-address> is used to allow widthdraw at any time and saves to new-vesting-wallet-query.boc" cr 1 halt
+} : usage
+$# 10 < ' usage if
+
+$1 parse-workchain-id constant wc
+$2 parse-int constant wallet-id
+$3 constant file-base
+$4 parse-int constant start-time
+$5 parse-int constant duration-time
+$6 parse-int constant unlock-period
+$7 parse-int constant cliff-period
+$8 parse-int Gram* constant vesting-amount
+$9 true parse-load-address =: bounce 2=: sender-address
+$10 true parse-load-address =: bounce 2=: owner-address
+
+file-base +".pk" load-keypair =: wallet_pk =: pubkey
+
+"vesting-wallet.fif" include constant code
+<b start-time 64 u, duration-time 32 u, unlock-period 32 u, cliff-period 32 u, vesting-amount Gram, sender-address Addr, owner-address Addr, b> constant vesting-params
+<b 0 32 u, wallet-id 32 u, pubkey B, dictnew dict, vesting-params ref, b> constant data
+<b b{00110} s, code ref, data ref, b> // StateInit
+dup hashu wc swap 2dup 2constant vesting_addr
+."new wallet address = " 2dup .addr cr
+2dup file-base +".addr" save-address-verbose
+."Non-bounceable address (for init): " 2dup 7 .Addr cr
+."Bounceable address (for later access): " 6 .Addr cr
+
+<b wallet-id 32 u, -1 32 i, 0 32 u, b>
+dup ."signing message: " <s csr. cr
+dup hashu wallet_pk ed25519_sign_uint rot
+<b b{1000100} s, vesting_addr addr, b{000010} s, swap <s s, b{0} s, swap B, swap <s s, b>
+dup ."External message for initialization is " <s csr. cr
+2 boc+>B dup Bx. cr
+"new-vesting-wallet-create.boc" tuck B>file
+."(Saved to new-vesting-wallet-create.boc file " type .")" cr

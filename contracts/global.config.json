@@ -1,0 +1,109 @@
+{
+    "@type": "config.global",
+    "dht": {
+        "@type": "dht.config.global",
+        "k": 3,
+        "a": 3,
+        "static_nodes": {
+            "@type": "dht.nodes",
+            "nodes": [
+                {
+                    "@type": "dht.node",
+                    "id": {
+                        "@type": "pub.ed25519",
+                        "key": "edMRObH9XUGOB7lwhcGz5LdlZaG0VGqZ8JSKTpcS2Nc="
+                    },
+                    "addr_list": {
+                        "@type": "adnl.addressList",
+                        "addrs": [
+                            {
+                                "@type": "adnl.address.udp",
+                                "ip": 387809173,
+                                "port": 27210
+                            }
+                        ],
+                        "version": 0,
+                        "reinit_date": 0,
+                        "priority": 0,
+                        "expire_at": 0
+                    },
+                    "version": -1,
+                    "signature": "zJwWALbdSr15dZJER1jkd8ucV0ZwZ5lGr9mzc3j1PTfDQo7oWg2ImhSJdhIvMnChLbLqBpw/Cdd7oqrfnEw1Dg=="
+                },
+                {
+                    "@type": "dht.node",
+                    "id": {
+                        "@type": "pub.ed25519",
+                        "key": "h61aERHJqwDBXKR2xLk1Wdpu2N8YqJ6jeLNbKi4Ns/w="
+                    },
+                    "addr_list": {
+                        "@type": "adnl.addressList",
+                        "addrs": [
+                            {
+                                "@type": "adnl.address.udp",
+                                "ip": 387809174,
+                                "port": 7002
+                            }
+                        ],
+                        "version": 0,
+                        "reinit_date": 0,
+                        "priority": 0,
+                        "expire_at": 0
+                    },
+                    "version": -1,
+                    "signature": "smPCbMo+wLgk6FjNP2M3Vm+D4rI6apFm3w1G+ZPC1NEPtQyZ4RIQShK7LqcACYPHdfZRA48zAfPIMf/ExcB0BA=="
+                },
+                {
+                    "@type": "dht.node",
+                    "id": {
+                        "@type": "pub.ed25519",
+                        "key": "NweJRgG4tNXkS/fJJltkjbqfobE7vPdLPt/fopGNo5c="
+                    },
+                    "addr_list": {
+                        "@type": "adnl.addressList",
+                        "addrs": [
+                            {
+                                "@type": "adnl.address.udp",
+                                "ip": 387809170,
+                                "port": 59113
+                            }
+                        ],
+                        "version": 0,
+                        "reinit_date": 0,
+                        "priority": 0,
+                        "expire_at": 0
+                    },
+                    "version": -1,
+                    "signature": "Q7WFrmn1Dk35LuOdXrcV8AGItg5VoYsSQ1tpAjMbtVqAfaV3U9Yrw8k0HIltG0RvhkJjW6rRUsXNtfBm89p+AA=="
+                }
+            ]
+        }
+    },
+    "validator": {
+        "@type": "validator.config.global",
+        "zero_state": {
+            "workchain": -1,
+            "shard": -9223372036854775808,
+            "seqno": 0,
+            "root_hash": "ffOdWKFWm/+hayBnqC2y+kL2ko5N5adDsIgz8eJmZLE=",
+            "file_hash": "iSc6ZJl5yiT+CkZkfnee9TQZ5HReCizakiTPfq7g5DI="
+        },
+        "init_block": {
+            "workchain": -1,
+            "shard": -9223372036854775808,
+            "seqno": 0,
+            "root_hash": "ffOdWKFWm/+hayBnqC2y+kL2ko5N5adDsIgz8eJmZLE=",
+            "file_hash": "iSc6ZJl5yiT+CkZkfnee9TQZ5HReCizakiTPfq7g5DI="
+        }
+    },
+    "liteservers": [
+        {
+            "id": {
+                "@type": "pub.ed25519",
+                "key": "HGScG+or/EjSlbgXeqo8ciu5X8/Ou7WwEcsJUGqVN+o="
+            },
+            "ip": 387809170,
+            "port": 25636
+        }
+    ]
+}

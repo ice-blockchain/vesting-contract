@@ -26,7 +26,7 @@ file-base +".pk" load-keypair =: wallet_pk =: pubkey
 <b 0 32 u, wallet-id 32 u, pubkey B, dictnew dict, vesting-params ref, b> constant data
 <b b{00110} s, code ref, data ref, b> // StateInit
 dup hashu wc swap 2dup 2constant vesting_addr
-."new wallet address = " 2dup .addr cr
+."new vesting-wallet address = " 2dup .addr cr
 2dup file-base +".addr" save-address-verbose
 ."Non-bounceable address (for init): " 2dup 7 .Addr cr
 ."Bounceable address (for later access): " 6 .Addr cr
